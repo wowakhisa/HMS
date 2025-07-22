@@ -1,0 +1,541 @@
+/********** Template CSS **********/
+:root {
+    --primary: #ffffff;
+    --secondary: #34AD54;
+    --light: #EEF9FF;
+    --dark: rgb(255, 255, 255);
+}
+
+
+/*** Spinner ***/
+.spinner {
+    width: 40px;
+    height: 40px;
+    background: var(--primary); /* Pastikan variabel CSS --primary didefinisikan */
+    margin: 100px auto;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@keyframes sk-rotateplane {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+    z-index: 99999; /* Pastikan z-index cukup tinggi agar spinner terlihat di atas elemen lain */
+}
+
+#spinner.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-out, visibility 0s linear 0s;
+}
+
+/*** Heading ***/
+h1,
+h2,
+.fw-bold {
+    font-weight: 800 !important;
+}
+
+h3,
+h4,
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+h5,
+h6,
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn-primary,
+.btn-secondary {
+    color: #FFFFFF;
+    box-shadow: inset 0 0 0 50px transparent;
+}
+
+.btn-primary:hover {
+    box-shadow: inset 0 0 0 0 var(--primary);
+}
+
+.btn-secondary:hover {
+    box-shadow: inset 0 0 0 0 var(--secondary);
+}
+
+.btn-square {
+    width: 36px;
+    height: 36px;
+}
+
+.btn-sm-square {
+    width: 30px;
+    height: 30px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+
+/*** Navbar ***/
+.navbar-light .navbar-nav .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    margin-left: 25px;
+    padding: 35px 0;
+    color: #000; /* Warna teks hitam agar kontras di background putih */
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    transition: .5s;
+    display: flex;
+    justify-content: center; /* Memusatkan item secara horizontal */
+}
+
+.sticky-top.navbar-light .navbar-nav .nav-link {
+    padding: 20px 0;
+    color: #000; /* Warna teks hitam */
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.navbar-light .navbar-brand h1 {
+    color: #000; /* Warna judul hitam */
+}
+
+.navbar-light .navbar-toggler {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    position: fixed; /* Agar tetap di atas saat menu slide */
+    top: 10px;
+    right: 10px;
+    z-index: 1051;
+}
+
+/* Style untuk tampilan mobile dan menu slide */
+@media (max-width: 991.98px) {
+    .navbar-light {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1050;
+        background: #fff; /* Warna putih */
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #ffffff; /* Warna putih untuk menu slide */
+        transition: right 0.3s ease-in-out;
+        z-index: 1049;
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+
+    .navbar-collapse.show {
+        right: 0;
+        pointer-events: auto;
+    }
+
+    .navbar-light .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .navbar-light .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        margin-left: 0;
+        padding: 15px 20px;
+        color: #000; /* Teks hitam di mobile */
+    }
+
+    /* Hover dan aktif di mobile */
+    @media (max-width: 991.98px) {
+        .navbar-light .navbar-nav .nav-item .nav-link:hover,
+        .navbar-light .navbar-nav .nav-item .nav-link.active {
+            background-color: rgba(8, 0, 255, 0.348);
+            width: 100%;
+            text-align: left;
+            padding-left: 210px;
+            padding-right: 210px;
+        }
+    }
+
+    /* Styling untuk copyright di navbar slide */
+    .navbar-slide-copyright {
+        padding: 15px 20px;
+        text-align: center;
+        font-size: 0.8em;
+        color: #000; /* Warna teks copyright */
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .navbar-slide-copyright a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .navbar-slide-copyright a:hover {
+        color: #555;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-light {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        z-index: 1050;
+        transition: top 0.3s ease-in-out;
+        background: #fff; /* Warna putih */
+    }
+
+    .sticky-top.navbar-light {
+        position: fixed;
+        background: #fff; /* Pastikan tetap putih saat sticky */
+    }
+
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 2px;
+        bottom: -1px;
+        left: 50%;
+        background: var(--primary);
+        transition: .5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover::before,
+    .navbar-light .navbar-nav .nav-link.active::before {
+        width: 100%;
+        left: 0;
+    }
+
+    .navbar-light .navbar-nav .nav-link.nav-contact::before {
+        display: none;
+    }
+
+    .sticky-top.navbar-light .navbar-brand h1 {
+        color: var(--primary);
+    }
+}
+
+/* Scrollbar styling untuk menu slide di mobile */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    .navbar-collapse::-webkit-scrollbar {
+        width: 8px;
+    }
+    .navbar-collapse::-webkit-scrollbar-track {
+        background: #000; /* Warna scrollbar background */
+    }
+    .navbar-collapse::-webkit-scrollbar-thumb {
+        background: #4169E1; /* Warna handle scrollbar */
+        border-radius: 10px;
+    }
+    .navbar-collapse::-webkit-scrollbar-thumb:hover {
+        background: #1E90FF; /* Warna hover scrollbar */
+    }
+}
+/*** Carousel ***/
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 52, 129, 0.349);
+    z-index: 1;
+    display: flex; /* Center content vertically and horizontally */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+}
+
+.carousel-item {
+    height: 100%; /* Ensure the carousel item takes full height */
+}
+
+.carousel-item img {
+    width: 100%; /* Ensure the image takes full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area without stretching */
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h5 {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        font-weight: 200; /* Use a valid font-weight */
+    }
+
+    .carousel-caption h1 {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        font-weight: 200; /* Use a valid font-weight */
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+}
+/*** Miscellaneous ***/
+@media (min-width: 991.98px) {
+    .facts {
+        position: relative;
+        margin-top: -75px;
+        z-index: 1;
+    }
+}
+
+.whatsapp-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px; /* Sedikit di atas tombol Scroll to Top */
+    width: 50px;
+    height: 50px;
+    background-color: #25D366; /* Warna hijau khas WhatsApp */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1EBE57;
+    transform: scale(1.1);
+}
+
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    width: 50px;
+    height: 50px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30%;
+    font-size: 24px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+
+    
+    /* Mulai dalam keadaan tersembunyi */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s, transform 0.2s ease-in-out;
+}
+
+
+.back-to-top:hover {
+    color: #007bff;
+    background: #091E3E;
+    transform: scale(1.1); /* Zoom-in saat dihover */
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.bg-header {
+    background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.link-animated a {
+    transition: .5s;
+}
+
+.link-animated a:hover {
+    padding-left: 10px;
+}
+
+@media (min-width: 767.98px) {
+    .footer-about {
+        margin-bottom: -95px;
+    }
+}
+
+body {
+    background: linear-gradient(to right, rgba(134, 241, 255, 0.203), #f0f0f0e8);
+  }
+  
+  .blog-item {
+    background-color: white;
+    /* Anda mungkin ingin menambahkan margin di sekitar setiap item blog agar terlihat lebih terpisah */
+    margin-bottom: 20px;
+    /* Tambahkan border-radius untuk sudut yang lebih lembut */
+    border-radius: 10px;
+    /* Tambahkan box-shadow untuk memberikan sedikit efek elevasi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.092);
+  }
+
+
+/* Pastikan dropdown utama muncul saat hover */
+
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: rgba(0, 102, 255, 0.9) !important; /* Sesuaikan dengan warna dropdown */
+    color: rgb(255, 255, 255) !important;
+    outline: none !important; /* Hilangkan outline bawaan */
+}
+
+
+.navbar-nav .dropdown:hover > .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+}
+
+.dropdown-menu .dropdown:hover > .dropdown-menu {
+    display: block;
+    left: 0; /* Submenu tetap muncul ke bawah, bukan ke samping */
+    top: 100%; /* Muncul di bawah dropdown utama */
+    margin-top: 0;
+    
+}
+
+
+.dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+}
+
+
+
+/* Style dasar dropdown */
+
+
+.dropdown-menu {
+    position: absolute;
+    background-color: rgba(9, 30, 62, .7); /* Bisa sesuaikan dengan tema */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    list-style: none;
+    width: 200px;
+    opacity: 0;
+    transform: translateY(-15px); /* Mulai agak naik */
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Saat dropdown terbuka */
+.dropdown-menu {
+    position: absolute; /* Penting untuk mengatur posisi */
+    top: 100%; /* Menempatkan dropdown tepat di bawah tombol */
+    left: 0; /* Posisi awal di kiri */
+    z-index: 1000;
+    display: none; /* Sembunyikan secara default */
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Tambahkan properti yang dianimasikan */
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateX(-20px); /* Posisi awal sedikit ke kiri */
+    visibility: hidden; /* Awalnya tidak terlihat */
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateX(0); /* Slide ke posisi normal (kanan) */
+    visibility: visible;
+}
+
+/* Mengubah warna tulisan default */
+.dropdown-menu li a {
+    color: white; /* Ganti dengan warna yang diinginkan */
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Warna tulisan saat hover */
+.dropdown-menu li a:hover {
+    color: #007bff;  /* Warna tulisan saat dihover */
+    background-color: rgba(9, 30, 62, .7); /* Warna latar belakang saat dihover */
+    border-radius: 5px; /* Membuat efek lebih smooth */
+}
+
+
